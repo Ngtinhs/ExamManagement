@@ -1,9 +1,20 @@
 import './App.scss';
+import Header from './components/Header/Header';
+import {
+  Outlet
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="app-container">
-      <button>abc</button>
+      <div className='header-container'>
+        <Header />
+      </div>
+      <div className='main-container'></div>
+      <div className='sidenav-container'></div>
+      <div className='app-container'>
+        <Outlet />
+      </div>
     </div>
   );
 }
