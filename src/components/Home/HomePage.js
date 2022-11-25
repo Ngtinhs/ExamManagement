@@ -1,6 +1,6 @@
 import videoHomepage from '../../assets/video-homepage.mp4'
 import React from 'react'
-
+import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 const HomePage = (props) => {
     return (
         <div className='homepage-container'>
