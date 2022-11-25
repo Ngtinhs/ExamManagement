@@ -7,6 +7,15 @@ const HomePage = (props) => {
             <video autoPlay muted loop>
                 <source src={videoHomepage} type="video/mp4" />
             </video>
+            <div className='homepage-content'>
+                <div className='title-1'>Test</div>
+                <div className='title-2'>Test</div>
+                <div className='title-3'>
+                    <button>
+                        Bat dau
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
