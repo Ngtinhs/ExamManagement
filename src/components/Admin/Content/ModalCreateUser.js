@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -5,7 +6,16 @@ import { FcPlus } from 'react-icons/fc'
 
 const ModalCreateUser = (props) => {
     const { show, setShow}  = props;
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+        setusername("")
+        setEmail("")
+        setPassword("")
+        setRole("USER")
+        setImage("")
+        setPreviewImage("")
+    
+    };
     const handleShow = () => setShow(true);
 
 
@@ -24,6 +34,22 @@ const ModalCreateUser = (props) => {
 
         }
     } 
+//Xu ly nhan nut submit
+    const handleSubmitCreateUser = async() => {
+
+
+        //validate
+
+        //call apis
+        const data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('userImage', image);
+
+       await axios.post('http://localhost:8081/api/v1/participant', data)
+    }
     return (
         <div>
             <Modal show={show} onHide={handleClose} size="xl"
@@ -81,7 +107,7 @@ const ModalCreateUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
                         Save
                     </Button>
                 </Modal.Footer>
