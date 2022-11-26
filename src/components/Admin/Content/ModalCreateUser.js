@@ -3,9 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from 'react-icons/fc'
 
-const ModalCreateUser = () => {
-    const [show, setShow] = useState(false);
-
+const ModalCreateUser = (props) => {
+    const { show, setShow}  = props;
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -27,10 +26,6 @@ const ModalCreateUser = () => {
     } 
     return (
         <div>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
             <Modal show={show} onHide={handleClose} size="xl"
                 backdrop="static"
                 className='modal-add-user'
