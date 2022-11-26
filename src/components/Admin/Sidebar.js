@@ -15,6 +15,7 @@ import sidebarBg from '../../assets/bg2.jpg';
 
 import { DiReact } from "react-icons/di";
 import { MdDashboard } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 import './SideBar.scss';
 
@@ -43,7 +44,7 @@ const Sidebar = (props) => {
                         }}
                     >
                         <DiReact size={'3em'} color={"00bfff"} />
-                        <span >Hoi Dan IT</span>
+                        <span >NGTINHS</span>
                     </div>
                 </SidebarHeader>
 
@@ -53,6 +54,7 @@ const Sidebar = (props) => {
                             icon={<MdDashboard />}
                         >
                             Dashboard
+                            <Link to="/Admin" />
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
@@ -60,7 +62,9 @@ const Sidebar = (props) => {
                             icon={<FaGem />}
                             title="Features"
                         >
-                            <MenuItem> Quản lý Users</MenuItem>
+                            <MenuItem> Quản lý Users
+                                <Link to="/Admin/manage-users" />
+                            </MenuItem>
                             <MenuItem > Quản lý Bài Quiz</MenuItem>
                             <MenuItem> Quản lý Câu Hỏi</MenuItem>
                         </SubMenu>
@@ -76,13 +80,13 @@ const Sidebar = (props) => {
                         }}
                     >
                         <a
-                            href="https://haryphamdev.github.io/hoidanit-udemy/"
+                            href="https://github.com/Ngtinhs"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
                         >
                             <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
-                                &#169; Hỏi Dân IT Udemy
+                                &#169; NGTINH IT
                             </span>
                         </a>
                     </div>
