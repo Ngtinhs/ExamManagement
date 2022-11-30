@@ -5,11 +5,17 @@ import TableUser from "./TableUser";
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../../../services/apiServices";
 import ModalUpdateUser from "./ModalUpdateUser";
+import ModalDetailUser from "./ModalDetailUser";
+import ModalDeleteUser from "./ModalDeleteUser";
 
 const ManageUser = (props) => {
-  const [showModalCreateUser, SetshowModalCreateUser] = useState("false");
-  const [showModalUpdateUser, SetshowModalUpdateUser] = useState("false");
+  const [showModalCreateUser, SetshowModalCreateUser] = useState(false);
+  const [showModalUpdateUser, SetshowModalUpdateUser] = useState(false);
+  const [showModalDetailUser, SetshowModalDetailUser] = useState(false);
+  const [showModalDeleteUser, SetshowModalDeleteUser] = useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
+  const [dataDetail, setDataDetail] = useState({});
+  const [dataDelete, setDataDelete] = useState({});
 
   const [listUsers, setListUsers] = useState([]);
 
@@ -32,8 +38,18 @@ const ManageUser = (props) => {
     setDataUpdate(user);
   };
 
+  //Xu ly Detail user
+  const handleClickBtnDetail = (user) => {
+    SetshowModalDetailUser(true);
+    setDataDetail(user);
+  };
   const resetUpdateData = () => {
     setDataUpdate({});
+  };
+
+  const handleClickBtnDelete = (user) => {
+    SetshowModalDeleteUser(true);
+    setDataDelete(user);
   };
   return (
     <div className="manag-user-container">
@@ -53,6 +69,8 @@ const ManageUser = (props) => {
           <TableUser
             listUsers={listUsers}
             handleClickBtnUpdate={handleClickBtnUpdate}
+            handleClickBtnDetail={handleClickBtnDetail}
+            handleClickBtnDelete={handleClickBtnDelete}
           />
         </div>
         <ModalCreateUser
@@ -66,6 +84,18 @@ const ManageUser = (props) => {
           dataUpdate={dataUpdate}
           fetchListUsers={fetchListUsers}
           resetUpdateData={resetUpdateData}
+        />
+        <ModalDetailUser
+          setShow={SetshowModalDetailUser}
+          show={showModalDetailUser}
+          fetchListUsers={fetchListUsers}
+          dataUpdate={dataDetail}
+        />
+
+        <ModalDeleteUser
+          show={showModalDeleteUser}
+          setShow={SetshowModalDeleteUser}
+          dataDelete={dataDelete}
         />
       </div>
     </div>
