@@ -95,6 +95,7 @@ const ManageUser = (props) => {
           show={showModalCreateUser}
           setShow={SetshowModalCreateUser}
           fetchListUsers={fetchListUsers}
+          fetchListUsersWithPaginate={fetchListUsersWithPaginate}
         />
         <ModalUpdateUser
           show={showModalUpdateUser}
@@ -102,12 +103,14 @@ const ManageUser = (props) => {
           dataUpdate={dataUpdate}
           fetchListUsers={fetchListUsers}
           resetUpdateData={resetUpdateData}
+          fetchListUsersWithPaginate={fetchListUsersWithPaginate}
         />
         <ModalDetailUser
           setShow={SetshowModalDetailUser}
           show={showModalDetailUser}
           fetchListUsers={fetchListUsers}
           dataUpdate={dataDetail}
+          fetchListUsersWithPaginate={fetchListUsersWithPaginate}
         />
 
         <ModalDeleteUser
@@ -115,6 +118,7 @@ const ManageUser = (props) => {
           setShow={SetshowModalDeleteUser}
           dataDelete={dataDelete}
           fetchListUsers={fetchListUsers}
+          fetchListUsersWithPaginate={fetchListUsersWithPaginate}
         />
       </div>
     </div>
