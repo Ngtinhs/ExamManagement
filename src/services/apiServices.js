@@ -28,4 +28,14 @@ const deleteUser = (userid) => {
   return axios.delete("api/v1/participant", { data: { id: userid } });
 };
 
-export { postCreateNewUser, getAllUsers, PutUpdateUser, deleteUser };
+const getUSerWithPaginate = (page, limit) => {
+  return axios.get(`api/v1/participant?page=${page}&limit=${limit}`);
+};
+
+export {
+  postCreateNewUser,
+  getAllUsers,
+  PutUpdateUser,
+  deleteUser,
+  getUSerWithPaginate,
+};
