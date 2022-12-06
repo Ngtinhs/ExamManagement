@@ -1,21 +1,22 @@
 import "./login.scss";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postLogin } from "../../services/apiServices";
+import { postRegister } from "../../services/apiServices";
 import { toast } from "react-toastify";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   const navigate = useNavigate();
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     //validate
     //submit apis
-    let data = await postLogin(email, password); //email password nay do bien ở trên quản lý
+    let data = await postRegister(email, password, username); //email password nay do bien ở trên quản lý
     if (data && data.EC === 0) {
       toast.success(data.EM);
-      navigate("/");
+      navigate("/Login");
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
@@ -24,16 +25,6 @@ const Login = (props) => {
 
   return (
     <div className="login-container">
-      <div className="header">
-        <span>Don't have am account yet?</span>
-        <button
-          onClick={() => {
-            navigate("/Register");
-          }}
-        >
-          Sign up
-        </button>
-      </div>
       <div className="title col-4 mx-auto">NGTINHS</div>
       <div className="welcome col-4 mx-auto">Hello, who's this?</div>
       <div className="content-form col-4 mx-auto">
@@ -44,6 +35,7 @@ const Login = (props) => {
             className="form-control"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -53,21 +45,30 @@ const Login = (props) => {
             className="form-control"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            required
           />
         </div>
-        <span className="forgot-password">Forgot password</span>
+        <div className="form-group">
+          <label>Username</label>
+          <input
+            type={"username"}
+            className="form-control"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
         <div>
-          <button className="btn-submit" onClick={() => handleLogin()}>
-            Login to NGTINHS
+          <button className="btn-submit" onClick={() => handleRegister()}>
+            Confirm Register
           </button>
           <div className="text-center">
             <span
               className="back"
               onClick={() => {
-                navigate("/");
+                navigate("/Login");
               }}
             >
-              Go back home
+              Go back login
             </span>
           </div>
         </div>
