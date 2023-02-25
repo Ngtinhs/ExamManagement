@@ -29,7 +29,6 @@ const ModalCreateUser = (props) => {
     if (event.target && event.target.files && event.target.files[0]) {
       setPreviewImage(URL.createObjectURL(event.target.files[0]));
       setImage(event.target.files[0]);
-    } else {
     }
   };
 
@@ -67,7 +66,7 @@ const ModalCreateUser = (props) => {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await props.fetchListUsers();
+      await props.fetchListUsersWithPaginate(1);
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
