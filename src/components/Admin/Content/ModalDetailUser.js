@@ -33,6 +33,7 @@ const ModalDetailUser = (props) => {
       setusername(dataUpdate.username);
       setRole(dataUpdate.role);
       setImage("");
+
       if (dataUpdate.image) {
         setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`);
       }

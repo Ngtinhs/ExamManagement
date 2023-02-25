@@ -39,6 +39,7 @@ const ManageUser = (props) => {
       setListUsers(res.DT);
     }
   };
+
   const fetchListUsersWithPaginate = async (page) => {
     let res = await getUSerWithPaginate(page, LIMIT_USER);
 

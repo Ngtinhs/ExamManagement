@@ -14,6 +14,7 @@ const Login = (props) => {
     //validate
     //submit apis
     let data = await postRegister(email, password, username); //email password nay do bien ở trên quản lý
+
     if (data && data.EC === 0) {
       toast.success(data.EM);
       navigate("/Login");
