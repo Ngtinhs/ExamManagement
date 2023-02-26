@@ -1,7 +1,10 @@
 import videoHomepage from '../../assets/video-homepage.mp4'
 import React from 'react'
 import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 const HomePage = (props) => {
+    const isAuthencicated = useSelector(state => state.user.isAuthencicated)
+    const account = useSelector(state => state.user.account)
     return (
         <div className='homepage-container'>
             <video autoPlay muted loop>

@@ -3,17 +3,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/apiServices";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { doLogin } from "../../redux/action/userAction";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleLogin = async () => {
     //validate
     //submit apis
     let data = await postLogin(email, password); //email password nay do bien ở trên quản lý
     if (data && data.EC === 0) {
+      dispatch(doLogin(data))
       toast.success(data.EM);
       navigate("/");
     }
