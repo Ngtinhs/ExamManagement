@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom"
 import { getDataQuiz } from "../../services/apiServices"
 import _ from "lodash";
+import './DetailQuiz.scss'
 const DetailQuiz = (props) => {
     const params = useParams();
     const location = useLocation();
@@ -54,9 +55,9 @@ const DetailQuiz = (props) => {
                 <div className="q-content">
                     <div className="question">Howwwwwwwwwwww</div>
                     <div className="answer">
-                        <div className="a-child"></div>
-                        <div className="a-child"></div>
-                        <div className="a-child"></div>
+                        <div className="a-child">A</div>
+                        <div className="a-child">B</div>
+                        <div className="a-child">C</div>
                     </div>
                 </div>
                 <div className="footer">
